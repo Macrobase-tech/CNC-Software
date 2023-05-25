@@ -1,0 +1,18 @@
+
+Using Bluetooth
+Note: The USB/serial port stays open, and will keep connecting even reboots and crashes. So,useful messages are sent to the serial port. It will tell Bluetooth or WIFI info.
+
+[ESP...] command is applicable to any interface (serial, Bluetooth, WiFi, WebUI, etc.), but only startup information will come up on the serial port, because other interfaces have not started yet.
+
+Ensure #define ENABLE_ BLUETOOTH was not commented out in config.h. (Default is correct).
+
+Use USB serial port terminal to name Bluetooth, such as $Bluetooth/Name. Please refer to this document to learn how to use the [ESP...] command.Brief name is great.Example: $Bluetooth/Name=ESP32_BT. Password is unavailable.
+
+Use $Radio/mode=BT change radio mode to Bluetooth mode. ESP32 uses the same hardware for WiFi and Bluetooth, so only one is available at a time.
+
+A reboot is required to change to radio mode. Restart ESP32 will turn on Bluetooth with that name. Or press reset button or send command, $System/Control=Restart.
+
+Eanble serial Bluetooth. It works as serial port,which allows for backward compatibility with existing serial port transmitters, such as universal GCode transmitters.
+
+Note: Do not match during oprating, ESP32 may be interrupted.
+Tips: When enable BT mode, $Radio/mode=STA or $Radio/mode=AP can switch back to WiFi from Bluetooth console,then restart.
